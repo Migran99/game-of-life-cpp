@@ -1,1 +1,1 @@
-cd build && cmake .. && make && ./simple_example
+mkdir -p build && cd build && cmake .. && make && ./run
