@@ -178,13 +178,6 @@ int main()
     std::cout << "Matrix initialized: \n"
               << matrix << std::endl;
 
-    Eigen::Matrix3f kernel;
-    kernel << 1, 1, 1,
-        1, 0, 1,
-        1, 1, 1;
-    std::cout << "Kernel: \n"
-              << kernel << std::endl;
-
     Eigen::Matrix<double, MAP_WIDTH, MAP_HEIGHT> new_state = matrix.replicate(1, 1);
 
     for (int i = 0; i < ITERATIONS; i++)

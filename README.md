@@ -19,10 +19,6 @@ Matrix initialized:
 0 0 1 0 0
 0 0 1 0 0
 0 0 0 0 0
-Kernel: 
-1 1 1
-1 0 1
-1 1 1
 Iter [1]:
 0 0 0 0 0
 0 1 1 1 0
