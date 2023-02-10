@@ -4,6 +4,7 @@
 
 #define MAP_WIDTH 5
 #define MAP_HEIGHT 5
+#define ITERATIONS 100
 
 template <typename t>
 void schoen_print(t text)
@@ -171,9 +172,6 @@ int main()
 {
     Eigen::Matrix<double, MAP_WIDTH, MAP_HEIGHT> matrix;
 
-    std::cout << "Matrix init: \n"
-              << matrix << std::endl;
-
     zero_matrix(matrix);
     matrix.block(0, 2, 4, 1) << 1, 1, 1, 1;
 
@@ -187,23 +185,12 @@ int main()
     std::cout << "Kernel: \n"
               << kernel << std::endl;
 
-    Eigen::Matrix<double, MAP_WIDTH, MAP_HEIGHT> res = matrix.replicate(1, 1);
-
-    if (simple_convolution(matrix, kernel, res))
-        std::cout << "Matrix convolution: \n"
-                  << res
-                  << std::endl;
-
     Eigen::Matrix<double, MAP_WIDTH, MAP_HEIGHT> new_state = matrix.replicate(1, 1);
-    if (get_new_state(res, matrix, new_state))
-        std::cout << "Matrix convolution: \n"
-                  << new_state
-                  << std::endl;
 
-    for (int i = 0; i < 100; i++)
+    for (int i = 0; i < ITERATIONS; i++)
     {
         do_step(matrix, new_state);
-        std::cout << "Iter [" << i << "]:\n"
+        std::cout << "Iter [" << i+1 << "]:\n"
                   << new_state
                   << std::endl;
         matrix = new_state;
